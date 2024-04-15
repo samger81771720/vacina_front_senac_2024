@@ -1,3 +1,5 @@
+import { Pais } from "./pais";
+
   export interface Pessoa{
     idPessoa: number;
 	  tipo: number;
@@ -5,4 +7,5 @@
 	  dataNascimento: Date;
 	  sexo: string;
   	cpf: string;
+    pais: Pais;
   }

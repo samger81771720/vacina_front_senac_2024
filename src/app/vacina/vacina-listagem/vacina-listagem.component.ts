@@ -14,14 +14,14 @@ export class VacinaListagemComponent implements OnInit{
 
   public vacinas: Vacina[] = [];
 
-  constructor(private cartaService: CartasService){}
+  constructor(private vacinaService: VacinaService){}
 
   ngOnInit(): void{
     this.consultarTodasVacinas();
   }
 
   private consultarTodasVacinas(){
-    this.VacinaService.listasTodas().subscribe(
+    this.vacinaService.consultarTodas().subscribe(
       resultado => {
         this.vacinas = resultado;
       },

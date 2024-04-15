@@ -1,4 +1,4 @@
-import { Pessoa } from "./Pessoa";
+import { Pessoa } from "./pessoa";
 import { Pais } from "./pais";
 
 export interface Vacina{

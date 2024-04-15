@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
+
+
 import { CommonModule } from '@angular/common';
 
+
 import { VacinaRoutingModule } from './vacina-routing.module';
+
+
 import { VacinaListagemComponent } from './vacina-listagem/vacina-listagem.component';
 
 
@@ -14,4 +19,7 @@ import { VacinaListagemComponent } from './vacina-listagem/vacina-listagem.compo
     VacinaRoutingModule
   ]
 })
-export class VacinaModule { }
+
+export class VacinaModule {
+
+}
