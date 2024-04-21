@@ -1,32 +1,71 @@
-<form>
-  <div class="col-md-12">
-      <div class="col-md-3">
-          <label for="nomePais" class="form-label">País:</label>
-          <input type="text" class="form-control" id="nomePais">
+<!--<pre>Seletor: {{ seletor | json}}</pre>-->
+<!--<pre>Países: {{ paises | json}}</pre> -->
+<!--<pre>{{ seletor | json}}</pre>-->
+
+<div class="container">
+  <form>
+      <div class="card">
+          <div class="card-header text-white bg-primary">
+              <h4>Filtros</h4>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-6 form-group">
+                      <label for="nomePais" class="form-label">País:</label>
+                      <select class="form-control" name="nomePais"
+                              [(ngModel)]="seletor.nomePais">
+                          @for(p of paises; track p.id_Pais) {
+                             <option value="{{ p.nome }}">{{ p.nome }} ({{ p.sigla }})</option>
+                          }
+                      </select>
+                  </div>
+                  <div class="col-md-6 form-group">
+                      <label for="nomeVacina" class="form-label">Nome:</label>
+                      <input type="text" class="form-control" name="nomeVacina">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 form-group">
+                      <label for="btnPesquisar" class="form-label">&nbsp;</label>
+                      <button type="submit" class="btn btn-primary" name="btnPesquisar"
+                              (click)="pesquisar()">Pesquisar</button>
+                      <label for="btnLimpar" class="form-label">&nbsp;</label>
+                      <button type="submit" class="btn btn-warning"
+                              (click)="limpar()">Limpar</button>
+                  </div>
+              </div>
+          </div>
       </div>
-      <button type="submit" class="btn btn-primary" >Pesquisar</button>
-  </div>
-</form>
+  </form>
 
-<br><br>
+  <h2 class="">Vacinas</h2>
+  <br><br>
 
-<table class="table table-dark table-hover">
-  <thead>
+  <table class="table table-hover table-striped">
+    <thead>
       <th>Nome</th>
-      <th>País de Origem</th>
-      <th>Pesquisador</th>
-      <th>Iniciada em:</th>
-      <th>Estágio</th>
-  </thead>
-  <tbody>
-      @for(vacina of vacinas; track vacina) {
-          <tr>
-              <td>{{ vacina.nome }}</td>
-              <td>{{ vacina.pais.nome }}</td>
-              <td>{{ vacina.pesquisadorResponsavel.nome }}</td>
-              <td>{{ vacina.dataInicioPesquisa | date: 'dd/MM/yyyy' }}</td>
-              <td>{{ vacina.estagioDaVacina }}</td>
-          </tr>
+          <th>País de Origem</th>
+          <th>Pesquisador</th>
+          <th>Iniciada em:</th>
+          <th>Estágio</th>
+          <th>Ações</th>
+    </thead>
+    <tbody>
+      @for(vacina of vacinas; track vacina){
+        <tr>
+          <td>{{ vacina.nome }}</td>
+          <td>{{ vacina.pais.nome}} </td>
+          <td>{{ vacina.pesquisadorResponsavel.nome }}</td>
+          <td>{{ vacina.dataInicioPesquisa | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ vacina.estagioDaVacina}}</td>
+          <td>
+            <div class="row">
+              <button class="btn btn-primary col-md-4">Editar</button>
+              <button class="btn btn-danger col-md-4">Excluir</button>
+            </div>
+          </td>
+        </tr>
       }
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
