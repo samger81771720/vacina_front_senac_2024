@@ -1,1 +1,69 @@
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">VAC SAMPAIO</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Vacinas
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/vacina/cadastrar">Cadastrar vacina</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/vacina">Atualizar vacina</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/vacina/listagem">Listar todas as vacinas</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/vacina">Listar uma vacina</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/vacina">Excluir uma vacina</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/vacina">Listar vacinas com filtro</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Usuários
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/pessoa">Cadastrar pessoa</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/pessoa">Atualizar pessoa</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/pessoa">Listar todas as pessoa</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/pessoa">Listar uma pessoa</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/pessoa">Excluir uma pessoa</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Aplicações
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/aplicacao">Cadastrar aplicação</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/aplicacao">Atualizar aplicação</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/aplicacao">Listar todas as aplicações de um usuário</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/aplicacao">Listar todas as aplicações cadastradas</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/aplicacao">Listar uma aplicação</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/aplicacao">Excluir uma aplicação</a></li>
+              </ul>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Sobre</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<br>
+<router-outlet></router-outlet><router-outlet></router-outlet>

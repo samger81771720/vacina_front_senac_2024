@@ -10,8 +10,6 @@ import { PessoaService } from '../../shared/service/pessoa.service';
 
 @Component({
   selector: 'app-vacina-listagem',
-  //standalone: true,
-  //imports: [],
   templateUrl: './vacina-listagem.component.html',
   styleUrl: './vacina-listagem.component.scss'
 })
@@ -38,14 +36,9 @@ export class VacinaListagemComponent implements OnInit{
   classe VacinaListagemComponent que é na verdade um array do tipo
   Vacina(ou seja da classe Vacina)*/
   public vacinas : Array<Vacina> = new Array();
-
   public seletor : VacinaSeletor = new VacinaSeletor();
-
   public paises : Array<Pais> = new Array();
-
   public pessoas : Array<Pessoa> = new Array();
-
-
 
   ngOnInit(): void{
 
