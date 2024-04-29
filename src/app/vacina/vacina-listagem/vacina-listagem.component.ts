@@ -46,6 +46,11 @@ export class VacinaListagemComponent implements OnInit{
     /*Observe que o método pertence a essa classe "this."
     e está declarado logo abaixo."*/
 
+    this.consultarTodosPaises();
+  }
+
+
+  public consultarTodosPaises(){
     this.paisService.consultarTodos().subscribe( /*
     subscribe() é usado para iniciar operações assíncronas
     e observar seus resultados ou erros.*/
@@ -106,8 +111,12 @@ export class VacinaListagemComponent implements OnInit{
     });
   }
 
-  editar(idVacina: number){
-    this.router.navigate(['/vacina/cadastrar/', idVacina]);
+  public editar(idVacinaSelecionada: number){
+    this.router.navigate(['/vacina/cadastrar/', idVacinaSelecionada]);
+  }
+
+  public compareById(r1: any, r2: any): boolean{
+    return r1 && r2 ? r1.idVacina === r2.idVacina : r1 === r2;
   }
 
 }

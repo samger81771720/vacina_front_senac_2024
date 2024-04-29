@@ -14,22 +14,22 @@ export class VacinaService {
 
   }
 
-  private readonly API: string = "http://localhost:8080/senac-backend-20241-AndreSampaio/rest/vacina";
+  private readonly API: string = 'http://localhost:8080/senac-backend-20241-AndreSampaio/rest/vacina';
 
   public consultarTodas(): Observable<Array<Vacina>>{
-    return this.httpClient.get<Array<Vacina>>(this.API + "/consultarVacinas");
+    return this.httpClient.get<Array<Vacina>>(this.API + '/consultarVacinas');
   }
 
   public consultarComSeletor(seletor: VacinaSeletor): Observable<Array<Vacina>>{
-    return this.httpClient.post<Array<Vacina>>(this.API + "/filtro", seletor);
+    return this.httpClient.post<Array<Vacina>>(this.API + '/filtro', seletor);
   }
 
   public consultarPorId(idVacina: number): Observable<Vacina>{
-    return this.httpClient.get<Vacina>(this.API + "/" + idVacina);
+    return this.httpClient.get<Vacina>(this.API + '/' + idVacina);
   }
 
   public excluir(idVacina: number): Observable<boolean>{
-    return this.httpClient.delete<boolean>(this.API + "/" + idVacina);
+    return this.httpClient.delete<boolean>(this.API + '/' + idVacina);
   }
 
   public salvar(vacina: Vacina): Observable<Vacina>{

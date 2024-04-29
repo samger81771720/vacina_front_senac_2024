@@ -61,6 +61,23 @@ export class VacinaCadastrarComponent {
   }
 
   ngOnInit(): void {
+
+    this.consultarTodosOsPesquisadores();
+
+    this.consultarTodosOsPaises();
+
+    this.route.params.subscribe(
+      (params) =>{
+        this.idVacina = params['idVacina'];
+        if(this.idVacina) {
+          this.consultarVacinaPorId();
+        }
+      }
+    )
+
+  }
+
+  public consultarTodosOsPesquisadores(){
     this.pessoaService.consultarTodosPesquisadores().subscribe( /*
     subscribe() é usado para iniciar operações assíncronas
     e observar seus resultados ou erros.*/
@@ -71,15 +88,6 @@ export class VacinaCadastrarComponent {
         Swal.fire('Erro ao buscar a lista de pesquisadores','','error');
       }
     );
-    this.consultarTodosOsPaises();
-
-    this.route.params.subscribe((params) =>{
-        this.idVacina = params['idVacina'];
-        if(this.idVacina) {
-          this.consultarPorId();
-        }
-      }
-    )
   }
 
   private consultarTodosOsPaises(): void{
@@ -89,6 +97,17 @@ export class VacinaCadastrarComponent {
       },
       (erro) => {
         Swal.fire('Erro ao buscar a lista dos países','','error');
+      }
+    )
+  }
+
+  public consultarVacinaPorId(): void{
+    this.vacinaService.consultarPorId(this.idVacina).subscribe(
+      (resultado) => {
+        this.vacina = resultado;
+      },
+      (erro) => {
+        Swal.fire('Erro ao buscar a vacina no banco de dados para editá-la',erro,'error');
       }
     )
   }
@@ -108,7 +127,7 @@ export class VacinaCadastrarComponent {
         this.voltar();
       },
       (erro) => {
-        Swal.fire('Erro ao salvar a vacina','','error');
+        Swal.fire('Erro ao salvar a vacina: ' + erro.error.mensagem, 'error');
       }
     );
   }
@@ -125,17 +144,6 @@ export class VacinaCadastrarComponent {
     );
   }
 
-  public consultarPorId(): void{
-    this.vacinaService.consultarPorId(this.idVacina).subscribe(
-      (resultado) => {
-        this.vacina = resultado;
-      },
-      (erro) => {
-        Swal.fire('Erro ao buscar a vacina no banco de dados para editá-la','','error');
-      }
-    )
-  }
-
   public voltar(): void {
     this.router.navigate(['/vacina']);
   }
@@ -143,5 +151,4 @@ export class VacinaCadastrarComponent {
   public limparFormulario(): void {
     this.vacina = new Vacina();
   }
-
 }

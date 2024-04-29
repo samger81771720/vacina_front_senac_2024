@@ -77,7 +77,7 @@
     <div class="form-group col-md-6">
       <label for="pesquisadorResponsavel">Pesquisador responsável</label>
       <select class="form-control" name="pesquisadorResponsavel" id="pesquisadorResponsavel"
-      [(ngModel)]="vacina.pesquisadorResponsavel" required>
+          [(ngModel)]="vacina.pesquisadorResponsavel" required>
         @for(p of pessoas; track p.idPessoa) {
           <option [ngValue]="p">{{ p.nome }}</option>
         }
