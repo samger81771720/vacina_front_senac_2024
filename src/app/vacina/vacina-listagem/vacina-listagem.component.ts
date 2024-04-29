@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { VacinaService } from '../../shared/service/vacina.service';
 import { VacinaSeletor } from '../../shared/model/seletor/vacina.seletor';
 import { Pais } from '../../shared/model/pais';
-import { Pessoa } from '../../shared/model/pessoa';
 import { Vacina } from '../../shared/model/vacina';
 import { PaisService } from '../../shared/service/pais.service';
-import { PessoaService } from '../../shared/service/pessoa.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-vacina-listagem',
@@ -24,21 +25,20 @@ variáveis, buscar dados de serviços ou APIs, e configurar observables.
 */
 export class VacinaListagemComponent implements OnInit{
 
-  constructor(
-    private vacinaService : VacinaService,
-    private paisService : PaisService,
-    private pessoaService : PessoaService
-  ){
-
-  }
-
-  /*Na linha abaixo foi criada uma variável chamada vacinas para a
-  classe VacinaListagemComponent que é na verdade um array do tipo
-  Vacina(ou seja da classe Vacina)*/
   public vacinas : Array<Vacina> = new Array();
   public seletor : VacinaSeletor = new VacinaSeletor();
   public paises : Array<Pais> = new Array();
-  public pessoas : Array<Pessoa> = new Array();
+
+  constructor(
+    private vacinaService : VacinaService,
+    private paisService : PaisService,
+    private router: Router, //COMPONENTE PARA FAZER ROTEAMENTO ENTRA AS TELAS
+  ){
+
+   }
+
+  /*  ngOnInit(): void{ } - Utilizando sempre que um ou mais métodos precisem ser invocados ao
+  abrir a tela relacionada ao método*/
 
   ngOnInit(): void{
 
@@ -46,15 +46,13 @@ export class VacinaListagemComponent implements OnInit{
     /*Observe que o método pertence a essa classe "this."
     e está declarado logo abaixo."*/
 
-    this.consultarTodasPessoas();
-
     this.paisService.consultarTodos().subscribe( /*
     subscribe() é usado para iniciar operações assíncronas
     e observar seus resultados ou erros.*/
-      resultado => {
+      (resultado) => {
         this.paises = resultado;
       },
-      erro => {
+      (erro) => {
         console.log('Erro ao buscar países' + erro)
       }
     );
@@ -62,39 +60,54 @@ export class VacinaListagemComponent implements OnInit{
 
   private consultarTodasVacinas(){
     this.vacinaService.consultarTodas().subscribe(
-      resultado => {
+      (resultado) => {
         this.vacinas = resultado;
       },
-      erro => {
-        console.error('Erro ao consultar a lista de vacinas',erro)
-      }
-    )
-  }
-
-  private consultarTodasPessoas(){
-    this.pessoaService.consultarTodos().subscribe(
-      resultado => {
-        this.pessoas = resultado;
-      },
-      erro => {
-        console.error('Erro ao consultar a lista de pessoas',erro)
+      (erro) => {
+        Swal.fire('Erro ao consultar a lista de vacinas','','error');
       }
     )
   }
 
   public pesquisar(){
     this.vacinaService.consultarComSeletor(this.seletor).subscribe(
-      resultado => {
+      (resultado) => {
         this.vacinas = resultado;
       },
-      erro => {
-        console.log('Erro ao buscar todas as vacinas com o seletor.' + erro);
+      (erro) => {
+        Swal.fire('Erro ao buscar todas as vacinas com o seletor.','','error');
       }
     );
   }
 
   public limpar(){
     this.seletor = new VacinaSeletor();
+  }
+
+  excluir(vacinaSelecionada: Vacina){
+    Swal.fire({
+      title: 'Deseja realmente excluir a vacina?',
+      text: 'Essa ação não poderá ser desfeita!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, excluir!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.vacinaService.excluir(vacinaSelecionada.idVacina).subscribe(
+          resultado => {
+            this.pesquisar();
+          },
+          erro => {
+            Swal.fire('Erro!', 'Erro ao excluir a vacina selecionada: ' + erro.error.mensagem, 'error');
+          }
+        );
+      }
+    });
+  }
+
+  editar(idVacina: number){
+    this.router.navigate(['/vacina/cadastrar/', idVacina]);
   }
 
 }

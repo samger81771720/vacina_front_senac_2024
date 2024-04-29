@@ -10,13 +10,17 @@ import { Pessoa } from '../model/pessoa';
 export class PessoaService {
 
   constructor(private HttpClient: HttpClient){
-
+    
   }
 
   private readonly API: string = "http://localhost:8080/senac-backend-20241-AndreSampaio/rest/pessoa";
 
   public consultarTodos(): Observable<Array<Pessoa>>{
     return this.HttpClient.get<Array<Pessoa>>(this.API + "/consultarPessoas");
+  }
+
+  public consultarTodosPesquisadores(): Observable<Array<Pessoa>>{
+    return this.HttpClient.get<Array<Pessoa>>(this.API + "/pesquisadores");
   }
 
 }

@@ -1,4 +1,4 @@
-<pre>Seletor: {{ seletor | json}}</pre>
+<!--<pre>Seletor: {{ seletor | json}}</pre> -->
 <!--<pre>Países: {{ paises | json}}</pre> -->
 <!-- <pre>Vacinas:{{ vacinas | json}}</pre> -->
 
@@ -21,8 +21,19 @@
                   </div>
                   <div class="col-md-6 form-group">
                       <label for="nomeVacina" class="form-label">Nome:</label>
-                      <input type="text" class="form-control" name="nomeVacina">
+                      <input type="text" id="nomeVacina" class="form-control" name="nomeVacina"
+                            [(ngModel)]="seletor.nomeVacina">
                   </div>
+                  <div class="col-md-3 form-group">
+                    <label for="nomeVacina" class="form-label">Data inicial:</label>
+                    <input type="date" class="form-control" name="nomeVacina"
+                            [(ngModel)]="seletor.dataInicioPesquisaSeletor">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for="nomeVacina" class="form-label">Data final:</label>
+                    <input type="date" class="form-control" name="nomeVacina"
+                            [(ngModel)] = "seletor.dataFinalPesquisaSeletor">
+                </div>
               </div>
               <div class="row">
                   <div class="col-md-12 form-group">
@@ -60,8 +71,14 @@
           <td>{{ vacina.estagioDaVacina}}</td>
           <td>
             <div class="row">
-              <button class="btn btn-primary col-md-4">Editar</button>
-              <button class="btn btn-danger col-md-4">Excluir</button>
+              <div class="col-md-4">
+                <button class="btn btn-primary btn-block" (click)="editar(vacina.idVacina)">
+                  <i class="bi bi-x"></i>Editar</button>
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-danger btn-block"(click)="excluir(vacina)">
+                  <i class="bi bi-x"></i>Excluir</button>
+              </div>
             </div>
           </td>
         </tr>

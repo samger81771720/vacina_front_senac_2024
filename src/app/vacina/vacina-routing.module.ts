@@ -7,6 +7,7 @@ import { VacinaCadastrarComponent } from './vacina-cadastrar/vacina-cadastrar.co
 const routes: Routes = [
   { path: 'listagem', component: VacinaListagemComponent },
   { path: 'cadastrar', component: VacinaCadastrarComponent},
+  { path: 'cadastrar/:id', component: VacinaCadastrarComponent},
 ];
 
 @NgModule({

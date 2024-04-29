@@ -1,6 +1,6 @@
 import { Vacina } from "./vacina";
 
-export interface Aplicacao{
+export class Aplicacao{
   idAplicacao: number;
 	idPessoa: number;
 	vacinaAplicada: Vacina;
