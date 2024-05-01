@@ -32,7 +32,7 @@ export class VacinaListagemComponent implements OnInit{
   constructor(
     private vacinaService : VacinaService,
     private paisService : PaisService,
-    private router: Router, //COMPONENTE PARA FAZER ROTEAMENTO ENTRA AS TELAS
+    private router: Router, //COMPONENTE PARA FAZER ROTEAMENTO ENTRE AS TELAS
   ){
 
    }
@@ -113,10 +113,6 @@ export class VacinaListagemComponent implements OnInit{
 
   public editar(idVacinaSelecionada: number){
     this.router.navigate(['/vacina/cadastrar/', idVacinaSelecionada]);
-  }
-
-  public compareById(r1: any, r2: any): boolean{
-    return r1 && r2 ? r1.idVacina === r2.idVacina : r1 === r2;
   }
 
 }

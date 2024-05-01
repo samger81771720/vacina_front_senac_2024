@@ -8,6 +8,7 @@ import { PaisService } from '../../shared/service/pais.service';
 import { Vacina } from '../../shared/model/vacina';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AnyARecord } from 'node:dns';
 
 
 @Component({
@@ -54,8 +55,9 @@ export class VacinaCadastrarComponent {
     private vacinaService : VacinaService,
     private pessoaService : PessoaService,
     private paisService : PaisService,
-    private router: Router, //COMPONENTE PARA FAZER ROTEAMENTO ENTRA AS TELAS
-    private route: ActivatedRoute, //PEGAR OS PARAMETROS DA URL
+    private router: Router, /*COMPONENTE PARA FAZER ROTEAMENTO
+    ENTRE AS TELAS */
+    private route: ActivatedRoute, //COMPONENTE PARA CAPTURAR OS PARAMETROS DA URL
   ){
 
   }
@@ -151,4 +153,44 @@ export class VacinaCadastrarComponent {
   public limparFormulario(): void {
     this.vacina = new Vacina();
   }
+
+  public compareByIdPais(r1: any, r2: any): boolean{
+    return r1 && r2 ? r1.id_Pais === r2.id_Pais : r1 === r2;
+  }
+
+  public compareByIdPessoa(r1: any, r2: any): boolean{
+    return r1 && r2 ? r1.idPessoa === r2.idPessoa : r1 === r2;
+  }
 }
+  /*Vou quebrar isso em partes para facilitar a compreensão:
+
+r1 && r2: Esta parte verifica se tanto r1 quanto r2 são avaliados
+como verdadeiros (não nulos). Isso é feito usando o operador
+lógico &&, que retorna verdadeiro apenas se ambos os operandos
+também forem verdadeiros. Se qualquer um deles for nulo, esta
+expressão será avaliada como falsa.
+
+?: Este é o operador ternário. Ele separa a expressão condicional
+da expressão que será avaliada se a condição for verdadeira.
+
+r1.idPessoa === r2.idPessoa: Esta é a expressão que será avaliada
+se a condição anterior (r1 && r2) for verdadeira. Ela verifica se
+os IDs das pessoas representadas por r1 e r2 são os mesmos, como
+expliquei anteriormente. Se forem os mesmos, retorna true.
+
+:: Este separa a expressão que será avaliada se a condição (r1 && r2)
+for falsa daquela avaliada se a condição for verdadeira.
+
+r1 === r2: Esta é a expressão que será avaliada se a
+condição (r1 && r2) for falsa. Ela verifica se r1 e r2
+são exatamente o mesmo objeto na memória.
+Se forem o mesmo objeto, retorna true.
+
+Então, em resumo, se tanto r1 quanto r2 não forem nulos,
+a expressão verificará se os IDs das pessoas são iguais
+(r1.idPessoa === r2.idPessoa). Se um ou ambos r1 e r2
+forem nulos, a expressão verificará se os próprios
+objetos são os mesmos (r1 === r2).*/
+
+
+

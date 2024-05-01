@@ -1,73 +1,8 @@
 <!--<pre>{{vacina | json}}</pre>-->
 
-<!--
-<form class="p-4">
-  <div class="row">
-    <div class="form-group col-md-4">
-      <label for="nomeDaVacina">Nome da vacina</label>
-      <input class="form-control" name="nomeDaVacina" id="nomeDaVacina"
-             placeholder="insira aqui o nome da vacina aqui"
-             [(ngModel)]="vacina.nome" required>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="pesquisadorResponsavel">Pesquisador responsável</label>
-      <select class="form-control" name="pesquisadorResponsavel" id="pesquisadorResponsavel"
-      [(ngModel)]="vacina.pesquisadorResponsavel" required>
-    @for(p of pessoas; track p.idPessoa) {
-      <option [ngValue]="p">{{ p.nome }}</option>
-  }
-      </select>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group col-md-2">
-      <label for="estagioDaVacina">Estágio da vacina</label>
-      <select class="form-control" name="estagioDaVacina" id="estagioDaVacina"
-      [(ngModel)]="vacina.estagioDaVacina">
-        <option value="1">1 - Estágio inicial</option>
-        <option value="2">2 - Testes</option>
-        <option value="3">3 - Aplicação em massa</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="dataInicioPesquisa">Data do início da pesquisa</label>
-      <input type="date" class="form-control" name="dataInicioPesquisa" id="dataInicioPesquisa"
-      [(ngModel)]="vacina.dataInicioPesquisa" required>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="nomeDoPais">País</label>
-      <select class="form-control" name="nomeDoPais" id="nomeDoPais"
-            [(ngModel)]="vacina.pais" required>
-      @for(p of paises; track p.id_Pais){
-        <option [ngValue]="p">{{p.nome}}</option>
-      }
-      </select>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group col-md-1">
-      <button type="submit" class="form-control btn btn-warning" (click)="voltar()">
-          <i class="bi bi-arrow-left"></i> Voltar
-      </button>
-    </div>
-    <div class="form-group col-md-6">
-      <div class="row">
-        <div class="col-md-3">
-          <button type="button" class="form-control btn btn-secondary" (click)="limparFormulario()">
-            <i class="bi bi-x-circle"></i> Limpar
-          </button>
-        </div>
-        <div class="col-md-3">
-          <button type="submit" class="btn btn-primary" (click)="salvar()">Enviar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
--->
 <form class="p-4">
   <div class="row mb-3">
+    <h5>{{idVacina ? 'Editar' : 'Cadastro de'}} vacina</h5>
     <div class="form-group col-md-4">
       <label for="nomeDaVacina">Nome da vacina</label>
       <input class="form-control" name="nomeDaVacina" id="nomeDaVacina"
@@ -77,7 +12,8 @@
     <div class="form-group col-md-6">
       <label for="pesquisadorResponsavel">Pesquisador responsável</label>
       <select class="form-control" name="pesquisadorResponsavel" id="pesquisadorResponsavel"
-          [(ngModel)]="vacina.pesquisadorResponsavel" required>
+          [compareWith]="compareByIdPessoa"
+          [(ngModel)] = "vacina.pesquisadorResponsavel" required>
         @for(p of pessoas; track p.idPessoa) {
           <option [ngValue]="p">{{ p.nome }}</option>
         }
@@ -102,6 +38,7 @@
     <div class="form-group col-md-3">
       <label for="nomeDoPais">País</label>
       <select class="form-control" name="nomeDoPais" id="nomeDoPais"
+            [compareWith]="compareByIdPais"
             [(ngModel)]="vacina.pais" required>
         @for(p of paises; track p.id_Pais){
           <option [ngValue]="p">{{p.nome}}</option>
