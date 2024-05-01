@@ -50,7 +50,7 @@ export class VacinaListagemComponent implements OnInit{
   }
 
 
-  public consultarTodosPaises(){
+  private consultarTodosPaises(){
     this.paisService.consultarTodos().subscribe( /*
     subscribe() é usado para iniciar operações assíncronas
     e observar seus resultados ou erros.*/
@@ -58,7 +58,7 @@ export class VacinaListagemComponent implements OnInit{
         this.paises = resultado;
       },
       (erro) => {
-        console.log('Erro ao buscar países' + erro)
+        Swal.fire('Erro ao consultar a lista de países','','error');
       }
     );
   }
@@ -89,7 +89,7 @@ export class VacinaListagemComponent implements OnInit{
     this.seletor = new VacinaSeletor();
   }
 
-  excluir(vacinaSelecionada: Vacina){
+  public excluir(vacinaSelecionada: Vacina){
     Swal.fire({
       title: 'Deseja realmente excluir a vacina?',
       text: 'Essa ação não poderá ser desfeita!',
@@ -101,6 +101,7 @@ export class VacinaListagemComponent implements OnInit{
       if (result.value) {
         this.vacinaService.excluir(vacinaSelecionada.idVacina).subscribe(
           resultado => {
+            Swal.fire('Vacina excluída com sucesso!','','success');
             this.pesquisar();
           },
           erro => {

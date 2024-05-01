@@ -147,7 +147,7 @@ export class VacinaCadastrarComponent {
   }
 
   public voltar(): void {
-    this.router.navigate(['/vacina']);
+    this.router.navigate(['/vacina/listagem']);
   }
 
   public limparFormulario(): void {

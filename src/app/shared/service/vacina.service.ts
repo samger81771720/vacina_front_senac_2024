@@ -5,6 +5,13 @@ import { Observable } from 'rxjs';
 import { Vacina } from '../model/vacina';
 import { VacinaSeletor } from '../model/seletor/vacina.seletor';
 
+/*@Injectable({ providedIn: 'root' }) define que o serviço decorado
+estará disponível globalmente em toda a aplicação Angular. Isso é
+feito definindo providedIn como 'root', o que significa que o serviço
+será injetado na raiz do aplicativo Angular. Isso é útil quando você
+quer que um serviço seja compartilhado entre vários componentes ou
+módulos sem precisar importá-lo repetidamente.
+*/
 @Injectable({
   providedIn: 'root'
 })
