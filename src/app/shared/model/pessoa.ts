@@ -2,8 +2,8 @@ import { Pais } from "./pais";
 
   export class Pessoa{
     idPessoa: number;
+    nome: string;
 	  tipo: number;
-	  nome: string;
 	  dataNascimento: Date;
 	  sexo: string;
   	cpf: string;

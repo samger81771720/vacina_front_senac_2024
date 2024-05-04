@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { PessoaSeletor } from '../../shared/model/seletor/pessoa.seletor';
 import { Pais } from '../../shared/model/pais';
 import { PaisService } from '../../shared/service/pais.service';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoa-listagem',
@@ -21,6 +21,7 @@ export class PessoaListagemComponent implements OnInit{
   constructor(
     private pessoaService: PessoaService,
     private paisService : PaisService,
+    private router: Router //COMPONENTE PARA FAZER ROTEAMENTO ENTRE AS TELAS
   ){
 
   }
@@ -69,7 +70,7 @@ export class PessoaListagemComponent implements OnInit{
     this.seletor = new PessoaSeletor();
   }
 
-  public excluir(pessoaSelecionada: Pessoa){
+  public excluir(pessoaSelecionada: Pessoa): void{
     Swal.fire({
       title: 'Deseja realmente excluir a pessoa?',
       text: 'Essa ação não poderá ser desfeita!',
@@ -105,8 +106,9 @@ export class PessoaListagemComponent implements OnInit{
     }
   }
 
-  /*public editar(idPessoaSelecionada: number){
+
+  public editar(idPessoaSelecionada: number){
     this.router.navigate(['/pessoa/cadastrar/', idPessoaSelecionada]);
-  }*/
+  }
 
 }

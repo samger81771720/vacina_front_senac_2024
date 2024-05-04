@@ -1,22 +1,20 @@
-
 import { Component } from '@angular/core';
-import { VacinaService } from '../../shared/service/vacina.service';
 import { Pessoa } from '../../shared/model/pessoa';
-import { PessoaService } from '../../shared/service/pessoa.service';
 import { Pais } from '../../shared/model/pais';
-import { PaisService } from '../../shared/service/pais.service';
 import { Vacina } from '../../shared/model/vacina';
+import { VacinaService } from '../../shared/service/vacina.service';
+import { PessoaService } from '../../shared/service/pessoa.service';
+import { PaisService } from '../../shared/service/pais.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { AnyARecord } from 'node:dns';
-
 
 @Component({
-  selector: 'app-vacina-cadastrar',
-  templateUrl: './vacina-cadastrar.component.html',
-  styleUrl: './vacina-cadastrar.component.scss'
+  selector: 'app-vacina-detalhe',
+  //standalone: true,
+ // imports: [],
+  templateUrl: './vacina-detalhe.component.html',
+  styleUrl: './vacina-detalhe.component.scss'
 })
-
 /*
 
 export class VacinaCadastrarComponent {
@@ -43,7 +41,7 @@ locais dentro do construtor. Elas são utilizadas para armazenar
 dados temporários e não fazem parte da estrutura permanente da
 classe.
 */
-export class VacinaCadastrarComponent {
+export class VacinaDetalheComponent {
 
   public pessoas : Array<Pessoa> = new Array();
   public paises : Array<Pais> = new Array();
@@ -191,6 +189,7 @@ a expressão verificará se os IDs das pessoas são iguais
 (r1.idPessoa === r2.idPessoa). Se um ou ambos r1 e r2
 forem nulos, a expressão verificará se os próprios
 objetos são os mesmos (r1 === r2).*/
+
 
 
 
