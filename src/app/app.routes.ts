@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { PessoaModule } from './pessoa/pessoa.module';
 
 export const routes: Routes = [
   //OPCIONAL//{ path: '', redirectTo: '/vacina', pathMatch: 'full' },
@@ -11,12 +10,17 @@ export const routes: Routes = [
   {
     path: 'vacina',
     loadChildren: () =>
-      import('./vacina/vacina.module').then((m) => m.VacinaModule),
+      import('./vacina/vacina.module').then((m) => m.VacinaModule)
   },
   {
     path: 'pessoa',
     loadChildren: () =>
-      import('./pessoa/pessoa.module').then((m) => m.PessoaModule),
+      import('./pessoa/pessoa.module').then((m) => m.PessoaModule)
+  },
+  {
+    path: 'aplicacao',
+    loadChildren: () =>
+      import('./aplicacao/aplicacao.module').then((m) => m.AplicacaoModule)
   }
 ];
 
