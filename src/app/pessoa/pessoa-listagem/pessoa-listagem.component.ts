@@ -6,6 +6,7 @@ import { PessoaSeletor } from '../../shared/model/seletor/pessoa.seletor';
 import { Pais } from '../../shared/model/pais';
 import { PaisService } from '../../shared/service/pais.service';
 import { Router } from '@angular/router';
+import { BaseSeletor } from '../../shared/model/seletor/base.seletor';
 
 @Component({
   selector: 'app-pessoa-listagem',
@@ -13,7 +14,6 @@ import { Router } from '@angular/router';
   styleUrl: './pessoa-listagem.component.scss'
 })
 export class PessoaListagemComponent implements OnInit{
-
   public pessoas : Array<Pessoa> = new Array();
   public seletor : PessoaSeletor = new PessoaSeletor();
   public paises : Array<Pais> = new Array();
@@ -27,7 +27,9 @@ export class PessoaListagemComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.consultarTodasPessoas();
+    this.seletor.pagina = 1;
+    this.seletor.limite = 5;
+    this.pesquisar();
     this.consultarTodosPaises();
   }
 
@@ -106,9 +108,18 @@ export class PessoaListagemComponent implements OnInit{
     }
   }
 
-
   public editar(idPessoaSelecionada: number){
     this.router.navigate(['/pessoa/cadastrar/', idPessoaSelecionada]);
+  }
+
+  public anterior() {
+    this.seletor.pagina--;
+    this.pesquisar();
+  }
+
+  public posterior(){
+    this.seletor.pagina++;
+    this.pesquisar();
   }
 
 }

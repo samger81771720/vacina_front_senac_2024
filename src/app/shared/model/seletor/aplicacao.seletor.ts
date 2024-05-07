@@ -1,7 +1,11 @@
-  export class AplicacaoSeletor {
+import { BaseSeletor } from "./base.seletor";
+
+  export class AplicacaoSeletor extends BaseSeletor{
 
     vacinaUsadaNaAplicacao: string;
-    dataAplicacaoDaVacina: Date;
+    dataInicialDaAplicacaoDaVacina: Date;
+    dataFinalDaAplicacaoDaVacina: Date;
     avaliacaoReacaoVacina: number;
+    pessoaQueRecebeu: number;
 
   }
