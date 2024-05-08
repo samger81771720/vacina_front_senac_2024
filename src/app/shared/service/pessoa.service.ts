@@ -43,4 +43,13 @@ export class PessoaService {
   public consultarComSeletor(seletor: PessoaSeletor): Observable<Array<Pessoa>>{
     return this.HttpClient.post<Array<Pessoa>>(this.API + '/filtro', seletor);
   }
+
+  public contabilizarTotalPessoas(seletor: PessoaSeletor): Observable<number> {
+    return this.HttpClient.post<number>(this.API + '/contabilizar-total-registros', seletor)
+  }
+
+  contabilizarTotalPaginas(seletor: PessoaSeletor): Observable<number> {
+    return this.HttpClient.post<number>(this.API + '/contabilizar-total-paginas', seletor);
+  }
+
 }

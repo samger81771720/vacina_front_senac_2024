@@ -17,6 +17,7 @@ export class PessoaListagemComponent implements OnInit{
   public pessoas : Array<Pessoa> = new Array();
   public seletor : PessoaSeletor = new PessoaSeletor();
   public paises : Array<Pais> = new Array();
+  public totalPaginas: number = 0;
 
   constructor(
     private pessoaService: PessoaService,
@@ -28,18 +29,18 @@ export class PessoaListagemComponent implements OnInit{
 
   ngOnInit(): void {
     this.seletor.pagina = 1;
-    this.seletor.limite = 5;
     this.pesquisar();
     this.consultarTodosPaises();
+    this.contarPaginas();
   }
 
-  private consultarTodasPessoas(){
-    this.pessoaService.consultarTodos().subscribe(
-      (resultado) => {
-        this.pessoas = resultado;
+  public contarPaginas() {
+    this.pessoaService.contabilizarTotalPaginas(this.seletor).subscribe(
+      resultado => {
+        this.totalPaginas = resultado;
       },
-      (erro) => {
-        Swal.fire('Erro ao buscar a lista de pessoas','','error');
+      erro => {
+        Swal.fire('Erro ao consultar total de páginas', erro.error.mensagem, 'error');
       }
     );
   }
@@ -60,7 +61,12 @@ export class PessoaListagemComponent implements OnInit{
   public pesquisar(){
     this.pessoaService.consultarComSeletor(this.seletor).subscribe(
       (resultado) => {
-        this.pessoas = resultado;
+        if(resultado.length > 0){
+          this.pessoas = resultado;
+        } else{
+          this.seletor.pagina--;
+          Swal.fire('Não há mais registros de pessoas a serem exibidas com o seletor.');
+        }
       },
       (erro) => {
         Swal.fire('Erro ao buscar todas as pessoas com o seletor.','','error');
@@ -114,11 +120,19 @@ export class PessoaListagemComponent implements OnInit{
 
   public anterior() {
     this.seletor.pagina--;
+    if(this.seletor.pagina < 1){
+      this.seletor.pagina = 1;
+    }
     this.pesquisar();
   }
 
   public posterior(){
     this.seletor.pagina++;
+    this.pesquisar();
+  }
+
+  atualizarPaginacao() {
+    this.contarPaginas();
     this.pesquisar();
   }
 

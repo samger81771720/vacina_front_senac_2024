@@ -99,6 +99,15 @@
       }
     </tbody>
     <nav aria-label="Page navigation example">
+        <div class="col-md-6">
+        <!-- Componente de quantidade de registros por página -->
+        <label for="quantidadeRegistros">Quantidade de registros por página:</label>
+        <select class="form-select" [(ngModel)]="seletor.limite" (change)="atualizarPaginacao()">
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+        </select>
+    </div>
       <ul class="pagination">
         <li class="page-item"><a class="page-link" (click)="anterior()">Previous</a></li>
         <li class="page-item"><a class="page-link" (click)="posterior()">Next</a></li>
