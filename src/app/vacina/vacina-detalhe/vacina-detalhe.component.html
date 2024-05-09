@@ -13,7 +13,7 @@
       <label for="pesquisadorResponsavel">Pesquisador responsável</label>
       <select class="form-control" name="pesquisadorResponsavel" id="pesquisadorResponsavel"
           [compareWith]="compareByIdPessoa"
-          [(ngModel)] = "vacina.pesquisadorResponsavel" required>
+          [(ngModel)]="vacina.pesquisadorResponsavel" required>
         @for(p of pessoas; track p.idPessoa) {
           <option [ngValue]="p">{{ p.nome }}</option>
         }

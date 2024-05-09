@@ -48,7 +48,6 @@ export class VacinaDetalheComponent {
   public vacina : Vacina = new Vacina();
   public idVacina: number;
 
-
   constructor(
     private vacinaService : VacinaService,
     private pessoaService : PessoaService,

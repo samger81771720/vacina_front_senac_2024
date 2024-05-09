@@ -1,9 +1,10 @@
+import { Pessoa } from "./pessoa";
 import { Vacina } from "./vacina";
 
 export class Aplicacao{
   idAplicacao: number;
-	idPessoa: number;
-	vacinaAplicada: Vacina;
+	idDaPessoaQueRecebeu: number;
+	idDaVacinaAplicada: Vacina;
 	dataAplicacao: Date;
 	avaliacaoReacao: number;
 }

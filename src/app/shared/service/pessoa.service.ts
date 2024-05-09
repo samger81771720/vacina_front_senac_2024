@@ -19,7 +19,7 @@ export class PessoaService {
   public consultarTodos(): Observable<Array<Pessoa>>{
     return this.HttpClient.get<Array<Pessoa>>(this.API + '/consultarPessoas');
   }
-
+  
   public consultarTodosPesquisadores(): Observable<Array<Pessoa>>{
     return this.HttpClient.get<Array<Pessoa>>(this.API + '/pesquisadores');
   }
