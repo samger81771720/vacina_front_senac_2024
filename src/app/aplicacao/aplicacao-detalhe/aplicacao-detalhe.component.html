@@ -25,7 +25,7 @@
                           [compareWith]="compareById"
                           [(ngModel)]="aplicacao.idDaVacinaAplicada" required>
                           @for(v of vacinas; track v.idVacina) {
-                           <option [ngValue]="v.idVacina"> {{ v.nome }} </option>
+                           <option [ngValue]="v"> {{ v.nome }} </option>
                         }
                     </select>
                 </div>
