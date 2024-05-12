@@ -17,7 +17,7 @@ export class PessoaListagemComponent implements OnInit{
   public pessoas : Array<Pessoa> = new Array();
   public seletor : PessoaSeletor = new PessoaSeletor();
   public paises : Array<Pais> = new Array();
-  public totalPaginas: number = 0;
+  public totalPaginas: number;
 
   constructor(
     private pessoaService: PessoaService,
@@ -115,7 +115,7 @@ export class PessoaListagemComponent implements OnInit{
   }
 
   public editar(idPessoaSelecionada: number){
-    this.router.navigate(['/pessoa/cadastrar/', idPessoaSelecionada]);
+    this.router.navigate(['/pessoa/pessoa-detalhe/', idPessoaSelecionada]);
   }
 
   public anterior() {

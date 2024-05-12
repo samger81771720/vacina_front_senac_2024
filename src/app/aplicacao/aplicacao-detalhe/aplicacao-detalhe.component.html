@@ -12,7 +12,7 @@
                       <label for="nomePessoa" class="form-label">Selecione o nome da pessoa a ser vacinada</label>
                       <select class="form-control" name="nomePessoa"
                           [compareWith]="compareById"
-                          [(ngModel)]="aplicacao.idDaPessoaQueRecebeu" required>
+                          [(ngModel)]="aplicacao.idPessoa" required>
                           @for(p of pessoas; track p.idPessoa) {
                              <option [ngValue]="p.idPessoa"> {{ p.nome }} </option>
                           }
@@ -23,7 +23,7 @@
                     <label for="nomeVacina" class="form-label">Selecione a vacina a ser aplicada</label>
                     <select class="form-control" name="nomeVacina"
                           [compareWith]="compareById"
-                          [(ngModel)]="aplicacao.idDaVacinaAplicada" required>
+                          [(ngModel)]="aplicacao.vacinaAplicada" required>
                           @for(v of vacinas; track v.idVacina) {
                            <option [ngValue]="v"> {{ v.nome }} </option>
                         }
