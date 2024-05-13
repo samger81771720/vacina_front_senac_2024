@@ -7,7 +7,7 @@ export const routes: Routes = [
    www.exemplo.com e não apenas começar com ele. Então, se alguém
    digitar www.exemplo.com/outra-coisa, não será redirecionado para
    as vacina.*/
-  {
+   /*{
     path: 'vacina',
     loadChildren: () =>
       import('./vacina/vacina.module').then((m) => m.VacinaModule)
@@ -20,7 +20,13 @@ export const routes: Routes = [
   {
     path: 'aplicacao',
     loadChildren: () =>
-      import('./aplicacao/aplicacao.module').then((m) => m.AplicacaoModule)
+      import('./aplicacao/aplicacao.module').then((m) => m.AplicacaoModule),
+  }*/
+  { path: '', redirectTo: 'carros', pathMatch:'full'},
+  {
+    path: 'carros',
+    loadChildren: () =>
+      import('./carros/carros.module').then((m) => m.CarrosModule)
   }
 ];
 

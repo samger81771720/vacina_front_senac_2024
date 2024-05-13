@@ -1,3 +1,5 @@
+<!--
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
       <a class="navbar-brand" href="#">VAC SAMPAIO</a>
@@ -38,6 +40,39 @@
             </li>
               <li class="nav-item">
                   <a class="nav-link" href="#">Sobre</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<br>
+<router-outlet></router-outlet>
+
+
+-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">CARROS DA PROVA</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Carros Cadastrados
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/carros/consultar-carros-cadastrados">Consulta dos Carros Cadastrados</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Consultar Estoque De Carros
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/carros/consultar-carros-estoque">Consultar Estoque de Carros</a></li>
+                </ul>
               </li>
           </ul>
       </div>
