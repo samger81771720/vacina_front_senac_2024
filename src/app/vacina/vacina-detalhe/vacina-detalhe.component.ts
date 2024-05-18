@@ -15,9 +15,10 @@ import Swal from 'sweetalert2';
   templateUrl: './vacina-detalhe.component.html',
   styleUrl: './vacina-detalhe.component.scss'
 })
+
 /*
 
-export class VacinaCadastrarComponent {
+export class VacinaDetalheComponent {
 
   constructor()
 
@@ -35,11 +36,6 @@ do componente, mas não são propriedades específicas da classe.
 Eles são apenas instâncias que são passadas para o construtor
 pelo Angular como parte do processo de injeção de dependência.
 
-As variáveis vacinas, pessoas e paises não são propriedades
-da classe VacinaCadastrarComponent porque são apenas variáveis
-locais dentro do construtor. Elas são utilizadas para armazenar
-dados temporários e não fazem parte da estrutura permanente da
-classe.
 */
 export class VacinaDetalheComponent {
 
@@ -130,6 +126,12 @@ export class VacinaDetalheComponent {
       }
     );
   }
+
+  /*Observável e Subscribe:
+
+* "subscribe" é um método que você chama em um "Observable" para observar seus resultados.
+
+ *A chamada ao método salvar retorna um Observable, que é uma representação de uma operação assíncrona (nesse caso, uma requisição HTTP).*/
 
   public atualizar(): void {
     this.vacinaService.atualizar(this.vacina).subscribe(
