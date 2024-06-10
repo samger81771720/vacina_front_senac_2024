@@ -18,7 +18,25 @@ módulos sem precisar importá-lo repetidamente.
 export class VacinaService {
 
   constructor(private httpClient: HttpClient) {
+    /*
 
+       O objeto HttpClient é um serviço Angular
+    usado para realizar requisições HTTP. Ele
+    permite enviar e receber dados de servidores
+    remotos via métodos como GET, POST, PUT e
+    DELETE, facilitando a comunicação com APIs
+    RESTful.
+
+    O HttpClient é declarado dentro do construtor
+    da classe VacinaService para habilitar a injeção
+    de dependência, que permite que o Angular forneça
+    uma instância desse serviço automaticamente quando
+    o VacinaService for instanciado. Isso promove a
+    reutilização de código e facilita a testabilidade
+    e manutenção do serviço. Observe que ele é importado
+    junto com outros objetos na parte superior do arquivo.
+
+    */
   }
 
   private readonly API: string = 'http://localhost:8080/senac-backend-20241-AndreSampaio/rest/vacina';

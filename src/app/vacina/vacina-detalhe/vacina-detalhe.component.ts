@@ -177,7 +177,7 @@ se a condição anterior (r1 && r2) for verdadeira. Ela verifica se
 os IDs das pessoas representadas por r1 e r2 são os mesmos, como
 expliquei anteriormente. Se forem os mesmos, retorna true.
 
-:: Este separa a expressão que será avaliada se a condição (r1 && r2)
+: Este separa a expressão que será avaliada se a condição (r1 && r2)
 for falsa daquela avaliada se a condição for verdadeira.
 
 r1 === r2: Esta é a expressão que será avaliada se a
