@@ -31,18 +31,6 @@ export class PessoaListagemComponent implements OnInit{
     this.seletor.pagina = 1;
     this.pesquisar();
     this.consultarTodosPaises();
-    this.contarPaginas();
-  }
-
-  public contarPaginas() {
-    this.pessoaService.contabilizarTotalPaginas(this.seletor).subscribe(
-      resultado => {
-        this.totalPaginas = resultado;
-      },
-      erro => {
-        Swal.fire('Erro ao consultar total de páginas', erro.error.mensagem, 'error');
-      }
-    );
   }
 
   private consultarTodosPaises(){
@@ -132,7 +120,6 @@ export class PessoaListagemComponent implements OnInit{
   }
 
   atualizarPaginacao() {
-    this.contarPaginas();
     this.pesquisar();
   }
 
