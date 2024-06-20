@@ -119,7 +119,7 @@ export class PessoaListagemComponent implements OnInit{
     this.pesquisar();
   }
 
-  atualizarPaginacao() {
+  atualizarQtdeRegistrosPorPagina() {
     this.pesquisar();
   }
 
